@@ -1,0 +1,9 @@
+<% provide(:title, 'About - Shared view') %>
+<h1>About#index</h1>
+<p>Find me in app/views/about/index.html.erb</p>
+
+<% if is_amp? %>
+  <amp-img src='https://placekitten.com/600/400' layout='fixed' width=600 height=400>
+<% else %>
+  <%= image_tag 'https://placekitten.com/600/400', size: '600x400' %>
+<% end %>

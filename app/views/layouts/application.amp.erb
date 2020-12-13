@@ -1,0 +1,75 @@
+<!doctype html>
+<%# <html amp> is also valid markup %>
+<html amp lang="vi">
+  <head>
+    <title><%= yield :title %></title>
+    <meta charset='utf-8'>
+    <%# main AMP library %>
+    <%= javascript_include_tag 'https://cdn.ampproject.org/v0.js', async: true %>
+    <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
+    <meta name="amp-script-src" content="sha384-iER2Cy-P1498h1B-1f3ngpVEa9NG1xIxKqg0rNkRX0e7p5s0GYdit1MRKsELIQe8 sha384-UPY0FmlOzIjSqWqMgbuaEbqIdvpGY_FzCuTAyoLdrFJb2NYf8cPWJlugA0rUbXjL
+    sha384-tvoKljCwTSMId8wpKdpz8LLZ0LX4CYPO5SHE3naqBMSpjiAXs7nqAFyDqcIyKLnu
+    sha384-28AuuOPww1R3yKdaPfiLgMoR1IpWmqwZNYtMnTVwAJuPX_HpIe6qSXPBC-E5I0Sd
+    sha384-fZQaBxFzBabP2yhhZpkYc4zA35clMkPK72glImLl0jGgLy_m9VjzZVhOdGJ52uhK">
+    <%= favicon_link_tag asset_path("logo.png"), :rel => "icon", :type => "image/x-icon" %>
+    <link rel="canonical" href="<%= url_for(:only_path => false, format: nil) %>">
+    <meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>
+    <%# standard AMP styles %>
+    <style amp-boilerplate>
+      body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    </style>
+    <%# fallback %>
+    <noscript>
+      <style amp-boilerplate>
+        body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+      </style>
+    </noscript>
+    <%# custom inline css %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;display=swap&amp;subset=vietnamese">
+    <style amp-custom>
+      <%= webpack_inline_css 'application' %>
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-title">
+        <div class="title">
+            <a href="">
+              <amp-img src="<%= asset_path("logo.png")%>" alt="Welcome" height="127" width="127" class="logo"></amp-img>
+            </a>
+            <amp-script layout="container"
+						  src="/packs/js/clients/custom-58e1b4234e5553c6a559.js"
+						  class="sample">
+						  <button id="hello-url">Say hello!</button>
+						</amp-script>
+            <div class="subtitle">
+              <p><a href="https://www.facebook.com/haotv03" target="_blank">by Hảo Trương</a></p>
+            </div>
+            <div class="description">
+              <p>✎﹏Trong cuộc đời này muốn thấy cầu vồng phải chờ hết cơn mưa﹏✮</p>
+            </div>
+        </div>
+      </div>
+      <ul class="social-links animated fadeInDown">
+        <li><a href="https://www.facebook.com/haotv03" target="_blank"><i data-feather="facebook"></i></a></li>
+        <li><a href="https://www.instagram.com/_haortruonq" target="_blank"><i data-feather="instagram"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/haotv03" target="_blank"><i data-feather="linkedin"></i></a></li>
+      </ul>
+      <div class="footer">
+        <div class="by_farbox"><span>Copyright &copy; 2020 haotruong. All Right Reserved.</span></div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="page-top">
+        <div class="nav">
+          <ul>
+            <li>
+              <a class="current" href="">HiTech!</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

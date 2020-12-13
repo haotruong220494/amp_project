@@ -1,15 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
   <head>
-    <title>AmpProject</title>
+    <title><%= yield :title %></title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <%= favicon_link_tag asset_path("logo.png"), :rel => "icon", :type => "image/x-icon" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# add canonical page for regular html page %>
+    <link rel="canonical" href="<%= url_for(only_path: false) %>">
+    <%# add canonical reference for AMP version of page if require %>
+    <%= canonical_amphtml %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;display=swap&amp;subset=vietnamese">
   </head>
-
   <body>
-    <%= yield %>
+    <div class="sidebar">
+      <div class="logo-title">
+        <div class="title">
+            <a href="">
+              <%= image_tag("logo.png",alt: "Logo", class: "logo") %>
+            </a>
+            <h1></h1>
+            <div class="subtitle">
+              <p><a href="https://www.facebook.com/haotv03" target="_blank">by Hảo Trương</a></p>
+            </div>
+            <div class="description">
+              <p>✎﹏Trong cuộc đời này muốn thấy cầu vồng phải chờ hết cơn mưa﹏✮</p>
+            </div>
+        </div>
+      </div>
+      <ul class="social-links animated fadeInDown">
+        <li><a href="https://www.facebook.com/haotv03" target="_blank"><i data-feather="facebook"></i></a></li>
+        <li><a href="https://www.instagram.com/_haortruonq" target="_blank"><i data-feather="instagram"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/haotv03" target="_blank"><i data-feather="linkedin"></i></a></li>
+      </ul>
+      <div class="footer">
+        <div class="by_farbox"><span>Copyright &copy; 2020 haotruong. All Right Reserved.</span></div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="page-top">
+        <div class="nav">
+          <ul>
+            <li>
+              <a class="current" href="">HiTech!</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
